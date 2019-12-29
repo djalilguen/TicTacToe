@@ -1,13 +1,21 @@
 
-<ul>
-  <!--    <app-de *ngFor="let c of cell; let i = index" [etat]="d.etat" [indiceDansLeJeu]="i" (cellJouee)="majFacettes($event)"></app-de>-->
-  </ul>
-  <!--  <div class="divgrid">
-      <div *ngFor="let c of cell; let i = index">
-        <app-cell></app-cell>
-      </div>
-  </div>-->
-   <table id="" style="margin: 0 auto;">
+
+<div [ngClass]="{'divTours': true,
+  'divTours':superOrdi === false,
+  'difficile': superOrdi === true}">
+    <input type="checkbox" class="form-check-input" id="materialUnchecked" [(ngModel)]="superOrdi">
+    <label class="form-check-label" for="materialUnchecked">Niveau difficile</label>
+</div>
+
+  <div class="divTours">
+    <span>Tour de :  </span>
+    <span [ngStyle]="{color : estMonTour===true?'red':'black'}">
+    <span *ngIf="estMonTour">Joueur</span>
+    <span *ngIf="!estMonTour">Ordinateur</span>
+    </span>
+  </div>
+
+   <table id="grille">
     <tbody>
     <tr>
       <td><app-cell [indiceDansLeJeu]=0 [cellSymbol]="cells[0].cellSymbol"
@@ -33,15 +41,10 @@
       <td><app-cell [indiceDansLeJeu]=8 [cellSymbol]="cells[8].cellSymbol"
         (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell> </td>
     </tr>
-    <tr>
-      <td colspan="3">Tour de :
-        <span *ngIf="estMonTour">Joueur</span>
-        <span *ngIf="!estMonTour">Ordinateur</span>
-      </td>
-    </tr>
     </tbody>
   </table>
-  <div id = "res" style="margin: 0 auto;font-weight:bold;padding:15px 10px"
+  <div class="divTours"
   *ngIf="gameOver">{{resultat}}
     <button type="button" class="btn btn-info" (click)="newGame()">Nouvelle Partie</button>
   </div>
+  

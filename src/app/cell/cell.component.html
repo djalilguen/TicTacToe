@@ -1,3 +1,6 @@
-<div class="divCell" (click)="selectionner()">
+<div [ngClass]="{'divCell': true,
+'divCellSelectionnee':cellSymbol !== ''}" 
+
+(click)="selectionner()">
   <p [ngStyle]="{color : cellSymbol==='X' ?'red':'black'}">{{cellSymbol}}</p>
 </div>

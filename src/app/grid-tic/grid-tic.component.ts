@@ -25,6 +25,7 @@ export class GridTicComponent implements OnInit {
   resultat : string ='';
   estMonTour:boolean=true;//utilisé pour alterner entre le joueur et
                           //l'ordinateur
+  superOrdi:boolean=true;
 
   constructor() { }
 
@@ -43,8 +44,12 @@ export class GridTicComponent implements OnInit {
     //comme son nom l'indique, cette méthode permet d'implémenter la facon de
     //jouer de l'ordinateur.
     setTimeout(() => {
-      let cellule=this.getRandomAvailableSquare();
-      this.cells[cellule].cellSymbol =this.ordinateur;
+      if (this.superOrdi){this.superOrdinateur();
+      }else{
+        let index=this.choisirCelluleValide();
+        this.cells[index].cellSymbol =this.ordinateur;
+      }
+
     if(this.chercherCellVide()>0){
       if(this.leGagnant(this.ordinateur)==true){
         this.resultat = 'Ordinateur gagne la partie !!!';
@@ -60,15 +65,42 @@ export class GridTicComponent implements OnInit {
 
     }
     this.estMonTour=true;
-  }, 1000);
+  }, 800);
 }
-  getRandomAvailableSquare(): number {
-      let i = this.getRndInteger(0, this.getCellsVide().length - 1);
-      let squareIndex=this.getCellsVide()[i]
-      return squareIndex;
-    }
 
-    getRndInteger(min, max) {
+superOrdinateur(){
+  let tab=this.getCellsVide();
+  let index:number=-1;
+  let index2:number=-1;
+
+  for(let i=0;i<tab.length;i++){    // ordinateur vérifie s'il peut ganger
+    if(this.peutGagner(tab[i],this.ordinateur)){
+      index=tab[i];
+    };
+  }
+
+  for(let i=0;i<tab.length;i++){   // ordinateur vérifie si le joueur peut gagner
+    if(this.peutGagner(tab[i],this.joueur)){
+      index2=tab[i];
+    };
+  }
+  if (index!=-1) {
+    this.cells[index].cellSymbol =this.ordinateur;
+  }else if(index2!=-1){
+    this.cells[index2].cellSymbol =this.ordinateur;
+  } else{
+    let i=this.choisirCelluleValide();
+    this.cells[i].cellSymbol =this.ordinateur;
+  }
+
+}
+
+  choisirCelluleValide(): number {
+      let i = this.randomMinMax(0, this.getCellsVide().length - 1);
+      return this.getCellsVide()[i]
+  }
+
+    randomMinMax(min, max) {
    return Math.floor(Math.random() * (max - min + 1) ) + min;
  }
 
@@ -129,6 +161,72 @@ export class GridTicComponent implements OnInit {
           b=true;}});
     return b;
   }
+  peutGagner(i,symbol):boolean{
+    let b:boolean=false;
+  switch (i) {
+  case 0:
+    if((this.cells[1].cellSymbol==symbol && this.cells[2].cellSymbol==symbol)
+      || (this.cells[3].cellSymbol==symbol && this.cells[6].cellSymbol==symbol)
+      || (this.cells[4].cellSymbol==symbol && this.cells[8].cellSymbol==symbol)){
+        b=true;
+      }
+    break;
+  case 1:
+    if((this.cells[0].cellSymbol==symbol && this.cells[2].cellSymbol==symbol)
+      || (this.cells[4].cellSymbol==symbol && this.cells[7].cellSymbol==symbol)){
+      b=true;
+    }
+    break;
+  case 2:
+    if((this.cells[0].cellSymbol==symbol && this.cells[1].cellSymbol==symbol)
+      || (this.cells[5].cellSymbol==symbol && this.cells[8].cellSymbol==symbol)
+      || (this.cells[4].cellSymbol==symbol && this.cells[6].cellSymbol==symbol)){
+      b=true;
+      }
+    break;
+  case 3:
+    if((this.cells[0].cellSymbol==symbol && this.cells[6].cellSymbol==symbol)
+      || (this.cells[4].cellSymbol==symbol && this.cells[5].cellSymbol==symbol)){
+        b=true;
+      }
+    break;
+  case 4:
+    if((this.cells[1].cellSymbol==symbol && this.cells[7].cellSymbol==symbol)
+    || (this.cells[0].cellSymbol==symbol && this.cells[8].cellSymbol==symbol)
+    || (this.cells[2].cellSymbol==symbol && this.cells[6].cellSymbol==symbol)
+    || (this.cells[3].cellSymbol==symbol && this.cells[5].cellSymbol==symbol)){
+    b=true;
+    }
+    break;
+  case 5:
+    if((this.cells[3].cellSymbol==symbol && this.cells[4].cellSymbol==symbol)
+      || (this.cells[2].cellSymbol==symbol && this.cells[8].cellSymbol==symbol)){
+        b=true;
+      }
+    break;
+  case 6:
+    if((this.cells[0].cellSymbol==symbol && this.cells[3].cellSymbol==symbol)
+    || (this.cells[7].cellSymbol==symbol && this.cells[8].cellSymbol==symbol)
+    || (this.cells[2].cellSymbol==symbol && this.cells[4].cellSymbol==symbol)){
+    b=true;
+    }
+    break;
+  case 7:
+    if((this.cells[1].cellSymbol==symbol && this.cells[4].cellSymbol==symbol)
+      || (this.cells[6].cellSymbol==symbol && this.cells[8].cellSymbol==symbol)){
+        b=true;
+      }
+      break;
+  case 8:
+      if((this.cells[2].cellSymbol==symbol && this.cells[5].cellSymbol==symbol)
+        || (this.cells[6].cellSymbol==symbol && this.cells[7].cellSymbol==symbol)
+        || (this.cells[0].cellSymbol==symbol && this.cells[4].cellSymbol==symbol)){
+        b=true;
+        }
+    }
+    return b;
+  }
+
 
   combinaisonsGagnantes(): any[] {
     //retourne un tableau de toutes les combinaisons gagnantes

@@ -1,0 +1,23 @@
+.jumbotron{
+  position: relative;
+  text-align:center;
+  font-size: 18px;
+  background-color: #330 !important;
+  color : white;
+  font-weight: bold;
+}
+.jumbotron h1{
+  font-size: 36px;
+}
+.devloper{
+  border-bottom: 5px solid  #78bec5;
+  border-top: 5px solid  #78bec5;
+  border-radius: 14px;
+  position: absolute;
+   bottom: 10px;
+   float: right;
+   right: 10px;
+   width: 30%;
+   margin: 10px
+
+}

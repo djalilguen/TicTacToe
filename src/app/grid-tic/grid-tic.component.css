@@ -1,21 +1,45 @@
-#listeEtuds {
-  width: 500px;
-  border: 2px solid #330;
-  margin: auto;
-  align: center;
+#grille {
+  margin: 0 auto;
   }
 
 
 .divgrid{
-    /*background-color: #78bec5;
-    border-radius: 14px;
-    cursor: pointer;
-    color: #fff;
-    /*display: none;*/
+
     position:absolute;
     height: 100px;
     width: 100px;
     margin: 5px;
     float:left;
-  /*  display: inline-block;
-  position: absolute;*/}
+}
+
+.divTours, .difficile{
+    position: relative;
+    border-bottom: 5px solid  #78bec5;
+    border-top: 5px solid  #78bec5;
+    border-radius: 14px;
+    color:  #78bec5;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 22px;
+    align-items: center;
+    width: 360px;
+    padding: 5px;
+    margin: 5px auto;
+    margin-bottom: 20px;}
+
+.difficile{
+  border-bottom: 5px solid  #e01414;
+  border-top: 5px solid  #e01414;
+  color:  #e01414;
+    }
+
+.divCell  p {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }

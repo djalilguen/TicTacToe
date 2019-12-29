@@ -1,4 +1,4 @@
-.divCell{
+.divCell, .divCellSelectionnee{
     position: relative;
     background-color: #78bec5;
     border-radius: 14px;
@@ -7,14 +7,11 @@
     text-align: center;
     vertical-align: middle;
     align-items: center;
-    /*display: none;*/
     height: 120px;
     width: 120px;
-    margin: 3px;
-  /*  display:inline-block;
-  position: absolute;*/}
+    margin: 3px;}
 
-.divCell  p {
+.divCell p {
     font-size: 50px;
     font-weight: bold;
     margin: 0;
@@ -23,3 +20,11 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%) }
+/*
+.divCellSelectionnee{
+    background-color: #92b6f0;
+    cursor:context-menu;
+}
+.divCell:hover{
+  background-color: #92b6f0;
+}*/
