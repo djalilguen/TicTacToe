@@ -1,0 +1,47 @@
+
+<ul>
+  <!--    <app-de *ngFor="let c of cell; let i = index" [etat]="d.etat" [indiceDansLeJeu]="i" (cellJouee)="majFacettes($event)"></app-de>-->
+  </ul>
+  <!--  <div class="divgrid">
+      <div *ngFor="let c of cell; let i = index">
+        <app-cell></app-cell>
+      </div>
+  </div>-->
+   <table id="" style="margin: 0 auto;">
+    <tbody>
+    <tr>
+      <td><app-cell [indiceDansLeJeu]=0 [cellSymbol]="cells[0].cellSymbol"
+        (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell> </td>
+      <td><app-cell [indiceDansLeJeu]=1 [cellSymbol]="cells[1].cellSymbol"
+        (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell> </td>
+      <td> <app-cell [indiceDansLeJeu]=2 [cellSymbol]="cells[2].cellSymbol"
+        (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell></td>
+    </tr>
+    <tr>
+      <td><app-cell [indiceDansLeJeu]=3 [cellSymbol]="cells[3].cellSymbol"
+        (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell> </td>
+      <td><app-cell [indiceDansLeJeu]=4 [cellSymbol]="cells[4].cellSymbol"
+        (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell> </td>
+      <td><app-cell  [indiceDansLeJeu]=5 [cellSymbol]="cells[5].cellSymbol"
+        (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell> </td>
+    </tr>
+    <tr>
+      <td> <app-cell [indiceDansLeJeu]=6 [cellSymbol]="cells[6].cellSymbol"
+        (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell></td>
+      <td> <app-cell [indiceDansLeJeu]=7 [cellSymbol]="cells[7].cellSymbol"
+            (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell></td>
+      <td><app-cell [indiceDansLeJeu]=8 [cellSymbol]="cells[8].cellSymbol"
+        (cellJouee)="majCells($event)" [gameOver]="gameOver" [estMonTour]="estMonTour"></app-cell> </td>
+    </tr>
+    <tr>
+      <td colspan="3">Tour de :
+        <span *ngIf="estMonTour">Joueur</span>
+        <span *ngIf="!estMonTour">Ordinateur</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div id = "res" style="margin: 0 auto;font-weight:bold;padding:15px 10px"
+  *ngIf="gameOver">{{resultat}}
+    <button type="button" class="btn btn-info" (click)="newGame()">Nouvelle Partie</button>
+  </div>

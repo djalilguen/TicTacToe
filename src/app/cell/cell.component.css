@@ -1,0 +1,25 @@
+.divCell{
+    position: relative;
+    background-color: #78bec5;
+    border-radius: 14px;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    /*display: none;*/
+    height: 120px;
+    width: 120px;
+    margin: 3px;
+  /*  display:inline-block;
+  position: absolute;*/}
+
+.divCell  p {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
